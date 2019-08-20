@@ -3,3 +3,6 @@ all:
     example-play:
       ansible_connection: docker
       ansible_python_interpreter: python
+    nginx-test:
+      ansible_connection: docker
+

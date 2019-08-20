@@ -4,3 +4,7 @@
     - docker_container:
         name: example-play
         state: absent
+
+    - docker_container:
+        name: nginx-test
+        state: absent

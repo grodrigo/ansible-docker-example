@@ -10,3 +10,24 @@
   hosts: example-play
   roles:
     - name: "docker-role"
+
+- name: dependency provisioning
+  hosts: nginx-test
+  gather_facts: false
+  become: yes
+  become_method: su
+
+  tasks:
+    - name: "Installing python2 with raw (without role)"
+      hosts: nginx-test
+      raw: apk add python2
+
+    - name: "Installing Nano using apk module (without role)"
+      apk:
+        name: nano
+        state: present
+
+- name: Role after
+  hosts: nginx-test
+  roles:
+    - name: "docker-role"
